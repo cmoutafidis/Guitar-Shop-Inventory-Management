@@ -6,6 +6,8 @@ import com.cmoutafidis.enums.GuitarWood;
 import com.cmoutafidis.models.Guitar;
 import com.cmoutafidis.models.Inventory;
 
+import java.util.ArrayList;
+
 public class Main {
 
     public static void main(final String[] args) {
@@ -14,17 +16,18 @@ public class Main {
 
         final Guitar watErinLikes = new Guitar("", 0, GuitarBuilder.FENDER, "Stratocastor", GuitarType.ELECTRIC, GuitarWood.ALDER, GuitarWood.ALDER);
 
-        final Guitar guitar = inventory.search(watErinLikes);
+        final ArrayList<Guitar> matchingGuitars = inventory.search(watErinLikes);
 
-        if (guitar != null) {
-            System.out.println("Erin, you might like this:");
-            System.out.println("SerialNumber: " + guitar.getSerialNumber());
-            System.out.println("Price: " + guitar.getPrice());
-            System.out.println("Builder: " + guitar.getBuilder());
-            System.out.println("Model: " + guitar.getModel());
-            System.out.println("Type: " + guitar.getType());
-            System.out.println("BackWood: " + guitar.getBackWood());
-            System.out.println("TopWood: " + guitar.getTopWood());
+        if (matchingGuitars.size() > 0) {
+            System.out.println("Erin, you might like these guitars:");
+
+            for (final Guitar guitar : matchingGuitars) {
+                System.out.println("We have a " + guitar.getBuilder() + " " + guitar.getModel() + " " + guitar.getType() + " guitar:");
+                System.out.println(guitar.getBackWood() + " back and sides,");
+                System.out.println(guitar.getTopWood() + " top.");
+                System.out.println("You can have it for only $" + guitar.getPrice() + "!");
+                System.out.println("----");
+            }
         } else {
             System.out.println("Sorry, Erin, we have nothing for you.");
         }
@@ -33,5 +36,6 @@ public class Main {
 
     private static void initializeInventory(final Inventory inventory) {
         inventory.addGuitar("V95693", 1499.95, GuitarBuilder.FENDER, "Stratocastor", GuitarType.ELECTRIC, GuitarWood.ALDER, GuitarWood.ALDER);
+        inventory.addGuitar("V9512", 1549.95, GuitarBuilder.FENDER, "Stratocastor", GuitarType.ELECTRIC, GuitarWood.ALDER, GuitarWood.ALDER);
     }
 }
