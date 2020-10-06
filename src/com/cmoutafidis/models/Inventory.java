@@ -27,7 +27,8 @@ public class Inventory {
         return null;
     }
 
-    public Guitar search(final Guitar searchGuitar) {
+    public ArrayList<Guitar> search(final Guitar searchGuitar) {
+        final ArrayList<Guitar> matchingGuitars = new ArrayList<>();
         for (final Guitar guitar : this.guitars) {
             // Ignore Serial Number since it's unique
             // Ignore price since it's unique
@@ -47,9 +48,9 @@ public class Inventory {
             if (searchGuitar.getTopWood() != guitar.getTopWood()) {
                 continue;
             }
-            return guitar;
+            matchingGuitars.add(guitar);
         }
-        return null;
+        return matchingGuitars;
     }
 
 }
