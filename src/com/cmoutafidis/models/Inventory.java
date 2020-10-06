@@ -15,7 +15,7 @@ public class Inventory {
     }
 
     public void addGuitar(final String serialNumber, final double price, final GuitarBuilder builder, final String model, final GuitarType type, final GuitarWood backWood, final GuitarWood topWood) {
-        this.guitars.add(new Guitar(serialNumber, price, builder, model, type, backWood, topWood));
+        this.guitars.add(new Guitar(serialNumber, price, new GuitarSpec(builder, model, type, backWood, topWood)));
     }
 
     public Guitar getGuitar(final String serialNumber) {
@@ -27,25 +27,26 @@ public class Inventory {
         return null;
     }
 
-    public ArrayList<Guitar> search(final Guitar searchGuitar) {
+    public ArrayList<Guitar> search(final GuitarSpec searchSpec) {
         final ArrayList<Guitar> matchingGuitars = new ArrayList<>();
         for (final Guitar guitar : this.guitars) {
+            final GuitarSpec guitarSpec = guitar.getGuitarSpec();
             // Ignore Serial Number since it's unique
             // Ignore price since it's unique
-            if (searchGuitar.getBuilder() != guitar.getBuilder()) {
+            if (searchSpec.getBuilder() != guitarSpec.getBuilder()) {
                 continue;
             }
-            final String model = searchGuitar.getModel();
-            if (model != null && !model.equals("") && !model.toLowerCase().equals(guitar.getModel().toLowerCase())) {
+            final String model = searchSpec.getModel();
+            if (model != null && !model.equals("") && !model.toLowerCase().equals(guitarSpec.getModel().toLowerCase())) {
                 continue;
             }
-            if (searchGuitar.getType() != guitar.getType()) {
+            if (searchSpec.getType() != guitarSpec.getType()) {
                 continue;
             }
-            if (searchGuitar.getBackWood() != guitar.getBackWood()) {
+            if (searchSpec.getBackWood() != guitarSpec.getBackWood()) {
                 continue;
             }
-            if (searchGuitar.getTopWood() != guitar.getTopWood()) {
+            if (searchSpec.getTopWood() != guitarSpec.getTopWood()) {
                 continue;
             }
             matchingGuitars.add(guitar);

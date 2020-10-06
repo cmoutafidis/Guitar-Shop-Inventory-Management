@@ -4,6 +4,7 @@ import com.cmoutafidis.enums.GuitarBuilder;
 import com.cmoutafidis.enums.GuitarType;
 import com.cmoutafidis.enums.GuitarWood;
 import com.cmoutafidis.models.Guitar;
+import com.cmoutafidis.models.GuitarSpec;
 import com.cmoutafidis.models.Inventory;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class Main {
         final Inventory inventory = new Inventory();
         Main.initializeInventory(inventory);
 
-        final Guitar watErinLikes = new Guitar("", 0, GuitarBuilder.FENDER, "Stratocastor", GuitarType.ELECTRIC, GuitarWood.ALDER, GuitarWood.ALDER);
+        final GuitarSpec watErinLikes = new GuitarSpec(GuitarBuilder.FENDER, "Stratocastor", GuitarType.ELECTRIC, GuitarWood.ALDER, GuitarWood.ALDER);
 
         final ArrayList<Guitar> matchingGuitars = inventory.search(watErinLikes);
 
@@ -22,9 +23,10 @@ public class Main {
             System.out.println("Erin, you might like these guitars:");
 
             for (final Guitar guitar : matchingGuitars) {
-                System.out.println("We have a " + guitar.getBuilder() + " " + guitar.getModel() + " " + guitar.getType() + " guitar:");
-                System.out.println(guitar.getBackWood() + " back and sides,");
-                System.out.println(guitar.getTopWood() + " top.");
+                final GuitarSpec guitarSpec = guitar.getGuitarSpec();
+                System.out.println("We have a " + guitarSpec.getBuilder() + " " + guitarSpec.getModel() + " " + guitarSpec.getType() + " guitar:");
+                System.out.println(guitarSpec.getBackWood() + " back and sides,");
+                System.out.println(guitarSpec.getTopWood() + " top.");
                 System.out.println("You can have it for only $" + guitar.getPrice() + "!");
                 System.out.println("----");
             }
