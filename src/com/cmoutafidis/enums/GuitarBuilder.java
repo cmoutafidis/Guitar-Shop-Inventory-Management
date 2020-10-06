@@ -1,0 +1,28 @@
+package com.cmoutafidis.enums;
+
+public enum GuitarBuilder {
+
+    FENDER, MARTIN, GIBSON, COLLINGS, OLSON, RYAN, PRS;
+
+    @Override
+    public String toString() {
+        switch (this) {
+            case FENDER:
+                return "Fender";
+            case MARTIN:
+                return "Martin";
+            case GIBSON:
+                return "Gibson";
+            case COLLINGS:
+                return "Collings";
+            case OLSON:
+                return "OLSON";
+            case RYAN:
+                return "Ryan";
+            case PRS:
+                return "Prs";
+            default:
+                return "";
+        }
+    }
+}

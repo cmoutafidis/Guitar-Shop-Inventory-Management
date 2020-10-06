@@ -1,5 +1,8 @@
 package com.cmoutafidis;
 
+import com.cmoutafidis.enums.GuitarBuilder;
+import com.cmoutafidis.enums.GuitarType;
+import com.cmoutafidis.enums.GuitarWood;
 import com.cmoutafidis.models.Guitar;
 import com.cmoutafidis.models.Inventory;
 
@@ -9,7 +12,7 @@ public class Main {
         final Inventory inventory = new Inventory();
         Main.initializeInventory(inventory);
 
-        final Guitar watErinLikes = new Guitar("", 0, "fender", "Stratocastor", "electric", "Alder", "Alder");
+        final Guitar watErinLikes = new Guitar("", 0, GuitarBuilder.FENDER, "Stratocastor", GuitarType.ELECTRIC, GuitarWood.ALDER, GuitarWood.ALDER);
 
         final Guitar guitar = inventory.search(watErinLikes);
 
@@ -29,6 +32,6 @@ public class Main {
     }
 
     private static void initializeInventory(final Inventory inventory) {
-        inventory.addGuitar("V95693", 1499.95, "Fender", "Stratocastor", "electric", "Alder", "Alder");
+        inventory.addGuitar("V95693", 1499.95, GuitarBuilder.FENDER, "Stratocastor", GuitarType.ELECTRIC, GuitarWood.ALDER, GuitarWood.ALDER);
     }
 }
