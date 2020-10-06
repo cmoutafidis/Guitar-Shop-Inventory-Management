@@ -20,6 +20,38 @@ public class GuitarSpec {
         this.topWood = topWood;
     }
 
+    @Override
+    public boolean equals(final Object o) {
+        if (o == this) {
+            return true;
+        }
+
+        if (!(o instanceof GuitarSpec)) {
+            return false;
+        }
+
+        final GuitarSpec guitarSpec = (GuitarSpec) o;
+
+        if (this.getBuilder() != guitarSpec.getBuilder()) {
+            return false;
+        }
+        final String model = this.getModel();
+        if (model != null && !model.equals("") && !model.toLowerCase().equals(guitarSpec.getModel().toLowerCase())) {
+            return false;
+        }
+        if (this.getType() != guitarSpec.getType()) {
+            return false;
+        }
+        if (this.getBackWood() != guitarSpec.getBackWood()) {
+            return false;
+        }
+        if (this.getTopWood() != guitarSpec.getTopWood()) {
+            return false;
+        }
+
+        return true;
+    }
+
     public GuitarBuilder getBuilder() {
         return this.builder;
     }
