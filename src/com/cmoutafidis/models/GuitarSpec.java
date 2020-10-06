@@ -9,13 +9,15 @@ public class GuitarSpec {
     private GuitarBuilder builder;
     private String model;
     private GuitarType type;
+    private int numString;
     private GuitarWood backWood;
     private GuitarWood topWood;
 
-    public GuitarSpec(final GuitarBuilder builder, final String model, final GuitarType type, final GuitarWood backWood, final GuitarWood topWood) {
+    public GuitarSpec(final GuitarBuilder builder, final String model, final GuitarType type, final int numString, final GuitarWood backWood, final GuitarWood topWood) {
         this.builder = builder;
         this.model = model;
         this.type = type;
+        this.numString = numString;
         this.backWood = backWood;
         this.topWood = topWood;
     }
@@ -31,11 +33,11 @@ public class GuitarSpec {
         }
 
         final GuitarSpec guitarSpec = (GuitarSpec) o;
+        final String model = this.getModel();
 
         if (this.getBuilder() != guitarSpec.getBuilder()) {
             return false;
         }
-        final String model = this.getModel();
         if (model != null && !model.equals("") && !model.toLowerCase().equals(guitarSpec.getModel().toLowerCase())) {
             return false;
         }
@@ -46,6 +48,9 @@ public class GuitarSpec {
             return false;
         }
         if (this.getTopWood() != guitarSpec.getTopWood()) {
+            return false;
+        }
+        if (this.getNumString() != guitarSpec.getNumString()) {
             return false;
         }
 
@@ -74,6 +79,14 @@ public class GuitarSpec {
 
     public void setType(final GuitarType type) {
         this.type = type;
+    }
+
+    public int getNumString() {
+        return this.numString;
+    }
+
+    public void setNumString(final int numString) {
+        this.numString = numString;
     }
 
     public GuitarWood getBackWood() {
