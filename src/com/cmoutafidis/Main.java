@@ -37,7 +37,7 @@ public class Main {
     }
 
     private static void initializeInventory(final Inventory inventory) {
-        inventory.addGuitar("V95693", 1499.95, GuitarBuilder.FENDER, "Stratocastor", GuitarType.ELECTRIC, GuitarWood.ALDER, GuitarWood.ALDER);
-        inventory.addGuitar("V9512", 1549.95, GuitarBuilder.FENDER, "Stratocastor", GuitarType.ELECTRIC, GuitarWood.ALDER, GuitarWood.ALDER);
+        inventory.addGuitar(new Guitar("V95693", 1499.95, new GuitarSpec(GuitarBuilder.FENDER, "Stratocastor", GuitarType.ELECTRIC, GuitarWood.ALDER, GuitarWood.ALDER)));
+        inventory.addGuitar(new Guitar("V9512", 1549.95, new GuitarSpec(GuitarBuilder.FENDER, "Stratocastor", GuitarType.ELECTRIC, GuitarWood.ALDER, GuitarWood.ALDER)));
     }
 }
