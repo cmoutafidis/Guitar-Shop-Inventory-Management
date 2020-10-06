@@ -1,5 +1,9 @@
 package com.cmoutafidis.models;
 
+import com.cmoutafidis.enums.GuitarBuilder;
+import com.cmoutafidis.enums.GuitarType;
+import com.cmoutafidis.enums.GuitarWood;
+
 import java.util.ArrayList;
 
 public class Inventory {
@@ -10,7 +14,7 @@ public class Inventory {
         this.guitars = new ArrayList<>();
     }
 
-    public void addGuitar(final String serialNumber, final double price, final String builder, final String model, final String type, final String backWood, final String topWood) {
+    public void addGuitar(final String serialNumber, final double price, final GuitarBuilder builder, final String model, final GuitarType type, final GuitarWood backWood, final GuitarWood topWood) {
         this.guitars.add(new Guitar(serialNumber, price, builder, model, type, backWood, topWood));
     }
 
@@ -27,24 +31,20 @@ public class Inventory {
         for (final Guitar guitar : this.guitars) {
             // Ignore Serial Number since it's unique
             // Ignore price since it's unique
-            final String builder = searchGuitar.getBuilder();
-            if (builder != null && !builder.equals("") && !builder.equals(guitar.getBuilder())) {
+            if (searchGuitar.getBuilder() != guitar.getBuilder()) {
                 continue;
             }
             final String model = searchGuitar.getModel();
-            if (model != null && !model.equals("") && !model.equals(guitar.getModel())) {
+            if (model != null && !model.equals("") && !model.toLowerCase().equals(guitar.getModel().toLowerCase())) {
                 continue;
             }
-            final String type = searchGuitar.getType();
-            if (type != null && !type.equals("") && !type.equals(guitar.getType())) {
+            if (searchGuitar.getType() != guitar.getType()) {
                 continue;
             }
-            final String backWood = searchGuitar.getBackWood();
-            if (backWood != null && !backWood.equals("") && !backWood.equals(guitar.getBackWood())) {
+            if (searchGuitar.getBackWood() != guitar.getBackWood()) {
                 continue;
             }
-            final String topWood = searchGuitar.getTopWood();
-            if (topWood != null && !topWood.equals("") && !topWood.equals(guitar.getTopWood())) {
+            if (searchGuitar.getTopWood() != guitar.getTopWood()) {
                 continue;
             }
             return guitar;
